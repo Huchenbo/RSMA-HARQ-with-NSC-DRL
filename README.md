@@ -139,16 +139,6 @@ Learning rate, entropy coefficient and exploration noise are annealed by the sam
 **all freeze at 40 % of the budget** (episode $1.6\times10^{4}$), so the remaining 60 % of the
 run sits on a fixed point.
 
-## Notes / 说明
 
-* The MDP and the mask (27) / projection (28) follow the paper; the restoration step, the 5 % power
-  margin of `repair` and the 24-dim latent parameterisation are implementation choices.
-* $d_S=600$ is a **km-valued number** and the powers share the normalised unit of $P_{\max}=3500$
-  (convention of the original simulator), so EE is in normalised units and is not directly comparable
-  with the absolute values of Fig. 7.
-* The training budget matches Table I ($4\times10^{4}$ episodes); the learning rate is
-  annealed from $3\times10^{-4}$ to $0$ instead of the constant $5\times10^{-5}$ of Table I.
-* PyTorch is pinned to one CPU thread (`--threads 1`): with the default thread count the 24-dim
-  projection runs ~2.8x slower, because every tensor of (27)-(29) is tiny.
 
 MIT licence, see `LICENSE`.
